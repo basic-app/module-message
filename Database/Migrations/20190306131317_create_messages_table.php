@@ -1,10 +1,10 @@
 <?php
 /**
- * @package Basic App System
+ * @copyright Copyright (c) 2018-2019 Basic App Dev Team
+ * @link http://basic-app.com
  * @license MIT License
- * @link    http://basic-app.com
  */
-namespace BasicApp\System\Database\Migrations;
+namespace BasicApp\Messages\Database\Migrations;
 
 class Migration_create_messages_table extends \BasicApp\Core\Migration
 {

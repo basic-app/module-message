@@ -1,6 +1,10 @@
 <?php
-
-namespace BasicApp\System\Database\Migrations;
+/**
+ * @copyright Copyright (c) 2018-2019 Basic App Dev Team
+ * @link http://basic-app.com
+ * @license MIT License
+ */
+namespace BasicApp\Messages\Database\Migrations;
 
 class Migration_messages_add_send_copy_to_admin_column extends \BasicApp\Core\Migration
 {

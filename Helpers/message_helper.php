@@ -1,8 +1,8 @@
 <?php
 /**
- * @package Basic App System
+ * @copyright Copyright (c) 2018-2019 Basic App Dev Team
+ * @link http://basic-app.com
  * @license MIT License
- * @link    http://basic-app.com
  */
 use BasicApp\Messages\Models\MessageModel;
 use BasicApp\Messages\Models\MessageConfig;
