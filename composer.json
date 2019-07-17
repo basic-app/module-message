@@ -1,0 +1,9 @@
+{
+    "name": "basic-app/module-messages",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "BasicApp\\Messages\\": ""
+        }
+    }
+}
