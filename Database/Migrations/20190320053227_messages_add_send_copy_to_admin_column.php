@@ -13,14 +13,14 @@ class Migration_messages_add_send_copy_to_admin_column extends \BasicApp\Core\Mi
 
     public function up()
     {
-        $this->forge->addColumn($this->tableName, [
-            'message_send_copy_to_admin' => $this->boolColumn()
+        $this->addColumn($this->tableName, [
+            'message_send_copy_to_admin' => $this->booleanColumn()
         ]);
     }
 
     public function down()
     {
-       $this->forge->dropColumn($this->tableName, 'message_send_copy_to_admin');
+       $this->dropColumn($this->tableName, 'message_send_copy_to_admin');
     }
 
 }

@@ -13,25 +13,23 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
 
 	public function up()
 	{
-		$this->forge->addField([
-			'message_id' => $this->primaryColumn(),
-			'message_uid' => $this->stringColumn([
-				'unique' => true
-			]),
-			'message_is_html' => $this->boolColumn(),
-			'message_enabled' => $this->boolColumn(),			
+		$this->addField([
+			'message_id' => $this->primaryKeyColumn(),
+			'message_uid' => $this->stringColumn(['unique' => true]),
+			'message_is_html' => $this->booleanColumn(),
+			'message_enabled' => $this->booleanColumn(),			
 			'message_subject' => $this->stringColumn(),
 			'message_body' => $this->textColumn()
 		]);
 
-		$this->forge->addKey('message_id', true);
+		$this->addKey('message_id', true);
 
-		$this->forge->createTable($this->tableName, false, ['ENGINE' => 'InnoDB']);
+		$this->createTable($this->tableName, false, ['ENGINE' => 'InnoDB']);
 	}
 
 	public function down()
 	{
-		$this->forge->dropTable($this->tableName);
+		$this->dropTable($this->tableName);
 	}
 
 }

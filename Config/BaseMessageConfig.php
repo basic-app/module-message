@@ -5,7 +5,7 @@ namespace BasicApp\Messages\Config;
 use BasicApp\Messages\Forms\MessageConfigForm;
 use PHPMailer\PHPMailer\PHPMailer;
 
-abstract class BaseMessageConfig extends \BasicApp\Core\DatabaseConfig
+abstract class BaseMessageConfig extends \BasicApp\Configs\DatabaseConfig
 {
 
     protected $modelClass = MessageConfigForm::class;

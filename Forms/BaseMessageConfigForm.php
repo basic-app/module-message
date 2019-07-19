@@ -10,7 +10,7 @@ use BasicApp\Messages\Config\MessageConfig;
 use PHPMailer\PHPMailer\PHPMailer;
 use BasicApp\Core\Form;
 
-abstract class BaseMessageConfigForm extends \BasicApp\Core\DatabaseConfigForm
+abstract class BaseMessageConfigForm extends \BasicApp\Configs\DatabaseConfigForm
 {
 
     const REPLY_TO_NONE = '';

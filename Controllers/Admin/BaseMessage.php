@@ -12,8 +12,6 @@ use BasicApp\Admins\Models\AdminModel;
 abstract class BaseMessage extends \BasicApp\Admin\AdminCrudController
 {
 
-    protected static $roles = [AdminModel::ADMIN_ROLE];
-
 	protected $modelClass = MessageModel::class;
 
 	protected $viewPath = 'BasicApp\Messages\Admin\Message';
