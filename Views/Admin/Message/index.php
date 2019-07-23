@@ -19,35 +19,16 @@ unset($this->data['breadcrumbs'][count($this->data['breadcrumbs']) - 1]['url']);
 $adminTheme = service('adminTheme');
 
 echo $adminTheme->table([
-    'emptyRow' => MessageModel::createEntity(),
+    'defaultRow' => MessageModel::createEntity(),
     'rows' => $elements,
     'columns' => function($model) {
-
-        $updateUrl = Url::returnUrl('admin/message/update', ['id' => $model->getPrimaryKey()]);
-
-        $deleteUrl = Url::returnUrl('admin/message/delete', ['id' => $model->getPrimaryKey()]);
-
         return [
-            $this->createColumn([
-                'attribute' => 'message_id',
-                'header' => $model->label('message_id')
-                
-            ])->number()->displaySmall(),
-            $this->createColumn([
-                'attribute' => 'message_uid',
-                'header' => $model->label('message_uid')
-            ]),
-            $this->createColumn([
-                'attribute' => 'message_subject',
-                'header' => $model->label('message_subject')
-                
-            ])->displaySmall(),
-            $this->booleanColumn([
-                'attribute' => 'message_enabled',
-                'header' => $model->label('message_enabled')
-            ]),
-            $this->updateButtonColumn(['url' => $updateUrl]),
-            $this->deleteButtonColumn(['url' => $deleteUrl])
+            $this->createColumn(['attribute' => 'message_id'])->number()->displaySmall(),
+            $this->createColumn(['attribute' => 'message_uid']),
+            $this->createColumn(['attribute' => 'message_subject'])->displaySmall(),
+            $this->createBooleanColumn(['attribute' => 'message_enabled']),
+            $this->createUpdateLinkColumn(['action' => 'admin/message/update']),
+            $this->createDeleteLinkColumn(['action' => 'admin/message/delete'])
         ];
     }
 ]);

@@ -16,10 +16,11 @@ abstract class BaseMessageModel extends \BasicApp\Core\Model
 	protected $returnType = Message::class;
 
     protected $labels = [
-        'message_uid' => 'Message UID',
-        'message_subject' => 'Message Subject',
-        'message_body' => 'Message Body',
-        'message_is_html' => 'Message is HTML',
+        'message_id' => 'ID',
+        'message_uid' => 'UID',
+        'message_subject' => 'Subject',
+        'message_body' => 'Body',
+        'message_is_html' => 'HTML format',
         'message_send_copy_to_admin' => 'Send Copy to Admin',
         'message_enabled' => 'Enabled'
     ];
