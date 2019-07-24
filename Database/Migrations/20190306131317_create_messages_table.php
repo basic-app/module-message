@@ -13,6 +13,30 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
 
 	public function up()
 	{
+        $where = [
+            'name' => 'create_messages_table',
+            'namespace' => 'BasicApp\System'
+        ];
+
+        $builder = $this->db->table($this->tableName);
+
+        $builder->where($where);
+
+        $query = $builder->get();
+
+        $count = $query->count();
+
+        if ($row)
+        {
+            $builder = $this->db->table($this->tableName);
+
+            $builder->where($where);
+
+            $builder->delete();
+
+            return;
+        }
+
 		$this->addField([
 			'message_id' => $this->primaryKeyColumn(),
 			'message_uid' => $this->stringColumn(['unique' => true]),
