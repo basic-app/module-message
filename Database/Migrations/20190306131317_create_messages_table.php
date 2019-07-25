@@ -35,7 +35,7 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
             return;
         }
 
-		$this->addField([
+		$this->forge->addField([
 			'message_id' => $this->primaryKeyColumn(),
 			'message_uid' => $this->stringColumn(['unique' => true]),
 			'message_is_html' => $this->booleanColumn(),
@@ -44,7 +44,7 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
 			'message_body' => $this->textColumn()
 		]);
 
-		$this->addKey('message_id', true);
+		$this->forge->addKey('message_id', true);
 
 		$this->createTable($this->tableName, false, ['ENGINE' => 'InnoDB']);
 	}
