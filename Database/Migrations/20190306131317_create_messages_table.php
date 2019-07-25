@@ -22,10 +22,6 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
 
         $builder->where($where);
 
-        //$query = $builder->get();
-
-        //$count = $query->count();
-
         $count = $builder->countAllResults();
 
         if ($count)
