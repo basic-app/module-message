@@ -18,17 +18,19 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
             'namespace' => 'BasicApp\System'
         ];
 
-        $builder = $this->db->table($this->tableName);
+        $builder = $this->db->table('migrations');
 
         $builder->where($where);
 
-        $query = $builder->get();
+        //$query = $builder->get();
 
-        $count = $query->count();
+        //$count = $query->count();
 
-        if ($row)
+        $count = $builder->countAllResults();
+
+        if ($count)
         {
-            $builder = $this->db->table($this->tableName);
+            $builder = $this->db->table('migrations');
 
             $builder->where($where);
 

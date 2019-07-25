@@ -13,6 +13,28 @@ class Migration_messages_add_send_copy_to_admin_column extends \BasicApp\Core\Mi
 
     public function up()
     {
+        $where = [
+            'name' => 'messages_add_send_copy_to_admin_column',
+            'namespace' => 'BasicApp\System'
+        ];
+
+        $builder = $this->db->table('migrations');
+
+        $builder->where($where);
+
+        $count = $builder->countAllResults();
+
+        if ($count)
+        {
+            $builder = $this->db->table('migrations');
+
+            $builder->where($where);
+
+            $builder->delete();
+
+            return;
+        }
+
         $this->addColumn($this->tableName, [
             'message_send_copy_to_admin' => $this->booleanColumn()
         ]);
