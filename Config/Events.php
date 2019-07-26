@@ -9,7 +9,7 @@ BasicApp\Core\CoreEvents::onPreSystem(function() {
 
 });
 
-BasicApp\Admin\AdminEvents::onAdminOptionsMenu(function($menu) 
+CodeIgniter\Events\Events::on('admin_options_menu', function($menu) 
 {
     if (BasicApp\Configs\Controllers\Admin\Config::checkAccess())
     {
@@ -21,7 +21,7 @@ BasicApp\Admin\AdminEvents::onAdminOptionsMenu(function($menu)
     }
 });
 
-BasicApp\Admin\AdminEvents::onAdminMainMenu(function($menu) 
+CodeIgniter\Events\Events::on('admin_main_menu', function($menu) 
 {
     if (BasicApp\Messages\Controllers\Admin\Message::checkAccess())
     {
