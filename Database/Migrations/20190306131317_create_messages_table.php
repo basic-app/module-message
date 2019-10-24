@@ -13,45 +13,24 @@ class Migration_create_messages_table extends \BasicApp\Core\Migration
 
 	public function up()
 	{
-        $where = [
-            'name' => 'create_messages_table',
-            'namespace' => 'BasicApp\System'
-        ];
-
-        $builder = $this->db->table('migrations');
-
-        $builder->where($where);
-
-        $count = $builder->countAllResults();
-
-        if ($count)
-        {
-            $builder = $this->db->table('migrations');
-
-            $builder->where($where);
-
-            $builder->delete();
-
-            return;
-        }
-
 		$this->forge->addField([
-			'message_id' => $this->primaryKeyColumn(),
-			'message_uid' => $this->stringColumn(['unique' => true]),
-			'message_is_html' => $this->booleanColumn(),
-			'message_enabled' => $this->booleanColumn(),			
-			'message_subject' => $this->stringColumn(),
-			'message_body' => $this->textColumn()
-		]);
+			'message_id' => $this->primaryKey()->toArray(),
+			'message_uid' => $this->string()->unique()->toArray(),
+			'message_is_html' => $this->boolean()->toArray(),
+			'message_enabled' => $this->boolean()->toArray(),			
+			'message_subject' => $this->string()->toArray(),
+            'message_send_copy_to_admin' => $this->boolean()->toArray(),
+            'message_body' => $this->text()->toArray()
+        ]);
 
 		$this->forge->addKey('message_id', true);
 
-		$this->createTable($this->tableName, false, ['ENGINE' => 'InnoDB']);
+		$this->forge->createTable($this->tableName);
 	}
 
 	public function down()
 	{
-		$this->dropTable($this->tableName);
+		$this->forge->dropTable($this->tableName);
 	}
 
 }

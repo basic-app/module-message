@@ -11,18 +11,15 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
 
 	protected $modelClass = MessageModel::class;
 
-	public $message_id;
+    public function __construct()
+    {
+        parent::__construct();
 
-	public $message_uid;
+        $this->message_is_html = 1;
 
-	public $message_subject;
+        $this->message_send_copy_to_admin = 0;
 
-	public $message_body;
-
-	public $message_is_html;
-
-	public $message_send_copy_to_admin;
-
-	public $message_enabled;
+        $this->message_enabled = 1;
+    }
 
 }

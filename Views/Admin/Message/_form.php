@@ -4,28 +4,28 @@ use BasicApp\Helpers\Url;
 
 $theme = service('adminTheme');
 
-$form = $theme->createForm(['errors' => $errors, 'model' => $model]);
+$form = $theme->createForm($model, $errors);
 
 $url = Url::currentUrl();
 
-echo $form->formOpen($url);
+echo $form->open($url);
 
-echo $form->input('message_uid');
+echo $form->inputGroup($data, 'message_subject');
 
-echo $form->input('message_subject');
+echo $form->inputGroup($data, 'message_uid');
 
-echo $form->textarea('message_body');
+echo $form->textareaGroup($data, 'message_body');
 
-echo $form->checkbox('message_is_html');
+echo $form->checkboxGroup($data, 'message_is_html');
 
-echo $form->checkbox('message_send_copy_to_admin');
+echo $form->checkboxGroup($data, 'message_send_copy_to_admin');
 
-echo $form->checkbox('message_enabled');
+echo $form->checkboxGroup($data, 'message_enabled');
 
 echo $form->renderErrors();
 
 $label = $model->getPrimaryKey() ? t('admin', 'Update') : t('admin', 'Insert');
 
-echo $form->submit($label);
+echo $form->submitButton($label);
 
-echo $form->formClose();
+echo $form->close();
