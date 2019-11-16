@@ -4,7 +4,7 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Controllers\Admin;
+namespace BasicApp\Message\Controllers\Admin;
 
 class Message extends BaseMessage
 {

@@ -2,7 +2,7 @@
 
 use BasicApp\Helpers\Url;
 
-$this->data['mainMenu']['system']['items']['messages']['active'] = true;
+$this->data['mainMenu']['system']['items']['message']['active'] = true;
 
 $this->data['title'] = t('admin', 'Messages');
 

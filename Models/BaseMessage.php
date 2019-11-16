@@ -4,7 +4,9 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Models;
+namespace BasicApp\Message\Models;
+
+use BasicApp\Mailer\Config\Mailer;
 
 abstract class BaseMessage extends \BasicApp\Core\Entity
 {
@@ -16,10 +18,30 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
         parent::__construct();
 
         $this->message_is_html = 1;
+    }
 
-        $this->message_send_copy_to_admin = 0;
+    public function applyToEmail($email, array $params = [])
+    {
+        $subject = $this->message_subject;
 
-        $this->message_enabled = 1;
+        $message = $this->message_text;
+
+        $email->setSubject(strtr($subject, $params));
+
+        $email->setMessage(strtr($message, $params));
+    }
+
+    public function sendToUser($user, array $params = [], & $error = null, array $options = [], array $mailerOptions = [])
+    {
+        $mailer = config(Mailer::class);
+
+        $email = $mailer->createEmail($mailerOptions);
+
+        $email->setTo($user->user_email, $user->user_name);
+
+        $this->applyToEmail($email, $params);
+
+        return $mailer->sendEmail($email, $options, $error);
     }
 
 }

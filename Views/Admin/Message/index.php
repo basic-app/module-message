@@ -1,6 +1,6 @@
 <?php
 
-use BasicApp\Messages\Models\MessageModel;
+use BasicApp\Message\Models\MessageModel;
 use BasicApp\Helpers\Url;
 
 require __DIR__ . '/_common.php';

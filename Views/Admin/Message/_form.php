@@ -18,10 +18,6 @@ echo $form->textareaGroup($data, 'message_body');
 
 echo $form->checkboxGroup($data, 'message_is_html');
 
-echo $form->checkboxGroup($data, 'message_send_copy_to_admin');
-
-echo $form->checkboxGroup($data, 'message_enabled');
-
 echo $form->renderErrors();
 
 $label = $model->getPrimaryKey() ? t('admin', 'Update') : t('admin', 'Insert');

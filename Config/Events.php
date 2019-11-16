@@ -7,9 +7,9 @@ if (class_exists(AdminEvents::class))
 {
     AdminEvents::onMainMenu(function($menu) 
     {
-        if (BasicApp\Messages\Controllers\Admin\Message::checkAccess())
+        if (BasicApp\Message\Controllers\Admin\Message::checkAccess())
         {
-            $menu->items['system']['items']['messages'] = [
+            $menu->items['system']['items']['message'] = [
                 'url'   => Url::createUrl('admin/message'),
                 'label' => t('admin.menu', 'Messages'),
                 'icon'  => 'fa fa-envelope'

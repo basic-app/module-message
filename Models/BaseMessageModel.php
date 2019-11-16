@@ -4,7 +4,7 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Models;
+namespace BasicApp\Message\Models;
 
 abstract class BaseMessageModel extends \BasicApp\Core\Model
 {
@@ -20,9 +20,7 @@ abstract class BaseMessageModel extends \BasicApp\Core\Model
         'message_uid' => 'UID',
         'message_subject' => 'Subject',
         'message_body' => 'Body',
-        'message_is_html' => 'HTML format',
-        'message_send_copy_to_admin' => 'Send Copy to Admin',
-        'message_enabled' => 'Enabled'
+        'message_is_html' => 'HTML format'
     ];
 
     protected $langCategory = 'message';

@@ -4,9 +4,9 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Models\Admin;
+namespace BasicApp\Message\Models\Admin;
 
-abstract class BaseMessage extends \BasicApp\Messages\Models\Message
+abstract class BaseMessage extends \BasicApp\Message\Models\Message
 {
 
 	protected $modelClass = MessageModel::class;

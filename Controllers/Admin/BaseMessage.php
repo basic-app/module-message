@@ -4,17 +4,16 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Controllers\Admin;
+namespace BasicApp\Message\Controllers\Admin;
 
-use BasicApp\Messages\Models\Admin\MessageModel;
-use BasicApp\Admins\Models\AdminModel;
+use BasicApp\Message\Models\Admin\MessageModel;
 
 abstract class BaseMessage extends \BasicApp\Admin\AdminCrudController
 {
 
 	protected $modelClass = MessageModel::class;
 
-	protected $viewPath = 'BasicApp\Messages\Admin\Message';
+	protected $viewPath = 'BasicApp\Message\Admin\Message';
 
 	protected $returnUrl = 'admin/message';	
 

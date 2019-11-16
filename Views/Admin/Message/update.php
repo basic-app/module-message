@@ -8,7 +8,7 @@ $this->data['enableCard'] = true;
 
 $this->data['cardTitle'] = $this->data['title'];
 
-echo app_view('BasicApp\Messages\Admin\Message\_form', [
+echo app_view('BasicApp\Message\Admin\Message\_form', [
         'model' => $model,
         'errors' => $errors
     ]

@@ -4,7 +4,7 @@
  * @link http://basic-app.com
  * @license MIT License
  */
-namespace BasicApp\Messages\Models;
+namespace BasicApp\Message\Models;
 
 class MessageModel extends BaseMessageModel
 {
