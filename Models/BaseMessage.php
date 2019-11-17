@@ -39,6 +39,10 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
 
         $email->setTo($user->user_email, $user->user_name);
 
+        $params['{user_email}'] = $user->user_email;
+
+        $params['{user_name}'] = $user->user_name;
+
         $this->applyToEmail($email, $params);
 
         return $mailer->sendEmail($email, $options, $error);
