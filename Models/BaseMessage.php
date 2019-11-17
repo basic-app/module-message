@@ -24,7 +24,7 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
     {
         $subject = $this->message_subject;
 
-        $message = $this->message_text;
+        $message = $this->message_body;
 
         $email->setSubject(strtr($subject, $params));
 
@@ -38,6 +38,8 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
         $email = $mailer->createEmail($mailerOptions);
 
         $email->setTo($user->user_email, $user->user_name);
+
+        $params['{base_url}'] = base_url();
 
         $params['{user_email}'] = $user->user_email;
 

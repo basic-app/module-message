@@ -23,7 +23,6 @@ echo $adminTheme->table([
         MessageModel::fieldLabel('message_id'),
         MessageModel::fieldLabel('message_uid'),
         MessageModel::fieldLabel('message_subject'),
-        MessageModel::fieldLabel('message_enabled'),
         '',
         ''
 
@@ -34,7 +33,6 @@ echo $adminTheme->table([
             $this->createColumn(['field' => 'message_id'])->number()->displaySmall(),
             $this->createColumn(['field' => 'message_uid']),
             $this->createColumn(['field' => 'message_subject'])->displaySmall(),
-            $this->createBooleanColumn(['field' => 'message_enabled']),
             $this->createUpdateLinkColumn(['action' => 'admin/message/update']),
             $this->createDeleteLinkColumn(['action' => 'admin/message/delete'])
         ];
@@ -43,5 +41,5 @@ echo $adminTheme->table([
 
 if ($pager)
 {
-    echo $pager->links('default', 'bootstrap4');
+    echo $pager->links('default', 'adminTheme');
 }
