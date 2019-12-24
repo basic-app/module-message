@@ -11,8 +11,7 @@ if (class_exists(AdminEvents::class))
         {
             $menu->items['system']['items']['message'] = [
                 'url'   => Url::createUrl('admin/message'),
-                'label' => t('admin.menu', 'Messages'),
-                'icon'  => 'fa fa-envelope'
+                'label' => t('admin.menu', 'Messages')
             ];
         }    
     });
