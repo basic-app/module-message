@@ -18,24 +18,46 @@ unset($this->data['breadcrumbs'][count($this->data['breadcrumbs']) - 1]['url']);
 
 $adminTheme = service('adminTheme');
 
-echo $adminTheme->table([
-    'labels' => [
-        MessageModel::fieldLabel('message_id'),
-        MessageModel::fieldLabel('message_uid'),
-        MessageModel::fieldLabel('message_subject'),
-        '',
-        ''
-
+echo $adminTheme->grid([
+    'headers' => [
+        [
+            'class' => $adminTheme::GRID_HEADER_PRIMARY_KEY,
+            'content' => $model->getFieldLabel('message_id')
+        ],
+        [
+            'class' => $adminTheme::GRID_HEADER_LABEL,
+            'content' => $model->getFieldLabel('message_subject')
+        ],
+        [
+            'class' => $adminTheme::GRID_HEADER_MEDIUM,
+            'content' => $model->getFieldLabel('message_uid')
+        ],
+        $model->getFieldLabel('message_is_html'),
+        ['class' => $adminTheme::GRID_HEADER_BUTTON],
+        ['class' => $adminTheme::GRID_HEADER_BUTTON]
     ],
-    'elements' => $elements,
-    'columns' => function($model) {
-        return [
-            $this->createColumn(['field' => 'message_id'])->number()->displaySmall(),
-            $this->createColumn(['field' => 'message_uid']),
-            $this->createColumn(['field' => 'message_subject'])->displaySmall(),
-            $this->createUpdateLinkColumn(['action' => 'admin/message/update']),
-            $this->createDeleteLinkColumn(['action' => 'admin/message/delete'])
-        ];
+    'items' => function() use ($elements, $adminTheme) {
+
+        foreach($elements as $data)
+        {
+            yield [
+                $data->message_id,
+                $data->message_subject,
+                $data->message_uid,
+                [
+                    'class' => $adminTheme::GRID_CELL_BOOLEAN,
+                    'content' => $data->message_is_html
+                ],
+                [
+                    'class' => $adminTheme::GRID_CELL_BUTTON_UPDATE,
+                    'url' => Url::returnUrl('admin/message/update', ['id' => $data->message_id])
+                ],
+                [
+                    'class' => $adminTheme::GRID_CELL_BUTTON_DELETE,
+                    'url' => Url::returnUrl('admin/message/delete', ['id' => $data->message_id])
+                ]
+            ];
+        }
     }
 ]);
 
