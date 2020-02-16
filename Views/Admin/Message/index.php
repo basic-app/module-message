@@ -32,9 +32,12 @@ echo $adminTheme->grid([
             'class' => $adminTheme::GRID_HEADER_MEDIUM,
             'content' => $model->getFieldLabel('message_uid')
         ],
-        $model->getFieldLabel('message_is_html'),
-        ['class' => $adminTheme::GRID_HEADER_BUTTON],
-        ['class' => $adminTheme::GRID_HEADER_BUTTON]
+        [
+            'class' => $adminTheme::GRID_HEADER_BOOLEAN,
+            'content' => $model->getFieldLabel('message_is_html')
+        ],
+        ['class' => $adminTheme::GRID_HEADER_BUTTON_UPDATE],
+        ['class' => $adminTheme::GRID_HEADER_BUTTON_DELETE]
     ],
     'items' => function() use ($elements, $adminTheme) {
 
@@ -44,18 +47,9 @@ echo $adminTheme->grid([
                 $data->message_id,
                 $data->message_subject,
                 $data->message_uid,
-                [
-                    'class' => $adminTheme::GRID_CELL_BOOLEAN,
-                    'content' => $data->message_is_html
-                ],
-                [
-                    'class' => $adminTheme::GRID_CELL_BUTTON_UPDATE,
-                    'url' => Url::returnUrl('admin/message/update', ['id' => $data->message_id])
-                ],
-                [
-                    'class' => $adminTheme::GRID_CELL_BUTTON_DELETE,
-                    'url' => Url::returnUrl('admin/message/delete', ['id' => $data->message_id])
-                ]
+                $data->message_is_html,
+                ['url' => Url::returnUrl('admin/message/update', ['id' => $data->message_id])],
+                ['url' => Url::returnUrl('admin/message/delete', ['id' => $data->message_id])]
             ];
         }
     }
