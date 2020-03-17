@@ -50,4 +50,19 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
         return $mailer->sendEmail($email, $options, $error);
     }
 
+    public function sendToAdmin(array $params = [], & $error = null, array $options = [], array $mailerOptions = [])
+    {
+        $mailer = config(Mailer::class);
+
+        $email = $mailer->createEmail($mailerOptions);
+
+        $email->setTo($mailer->from_email, $mailer->from_name);
+
+        $params['{base_url}'] = base_url();
+
+        $this->applyToEmail($email, $params);
+
+        return $mailer->sendEmail($email, $options, $error);
+    }
+
 }
