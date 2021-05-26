@@ -6,7 +6,7 @@
  */
 namespace BasicApp\Message\Database\Migrations;
 
-class Migration_create_messages_table extends \BasicApp\Core\Migration
+class Migration_create_messages_table extends \BasicApp\Migration\BaseMigration
 {
 
 	public $table = 'messages';

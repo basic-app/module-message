@@ -7,6 +7,7 @@
         }
     },
     "require": {
-        "basic-app/mailer": "*"
+        "basic-app/mailer": "*",
+        "basic-app/migration": "*"
     }
 }
