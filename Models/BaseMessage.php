@@ -6,8 +6,6 @@
  */
 namespace BasicApp\Message\Models;
 
-use BasicApp\Mailer\Config\Mailer;
-
 abstract class BaseMessage extends \BasicApp\Core\Entity
 {
 
@@ -31,38 +29,28 @@ abstract class BaseMessage extends \BasicApp\Core\Entity
         $email->setMessage(strtr($message, $params));
     }
 
-    public function sendToUser($user, array $params = [], & $error = null, array $options = [], array $mailerOptions = [])
+    public function sendToUser($user, array $params = [], & $error = null)
     {
-        $mailer = config(Mailer::class);
-
-        $email = $mailer->createEmail($mailerOptions);
+        $email = service('email');
 
         $email->setTo($user->user_email, $user->user_name);
 
         $params['{base_url}'] = base_url();
-
         $params['{user_email}'] = $user->user_email;
-
         $params['{user_name}'] = $user->user_name;
 
         $this->applyToEmail($email, $params);
 
-        return $mailer->sendEmail($email, $options, $error);
-    }
+        $return = $email->send(false);
+  
+        if (!$return)
+        {
+            $error = $email->printDebugger();
 
-    public function sendToAdmin(array $params = [], & $error = null, array $options = [], array $mailerOptions = [])
-    {
-        $mailer = config(Mailer::class);
+            $email->clear();
+        }
 
-        $email = $mailer->createEmail($mailerOptions);
-
-        $email->setTo($mailer->from_email, $mailer->from_name);
-
-        $params['{base_url}'] = base_url();
-
-        $this->applyToEmail($email, $params);
-
-        return $mailer->sendEmail($email, $options, $error);
+        return $return;
     }
 
 }

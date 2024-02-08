@@ -8,12 +8,9 @@ if (class_exists(AdminEvents::class))
 {
     AdminEvents::onMainMenu(function($menu) 
     {
-        if (service('admin')->can(MessageController::class))
-        {
-            $menu->items['system']['items']['message'] = [
-                'url'   => Url::createUrl('admin/message'),
-                'label' => t('admin.menu', 'Messages')
-            ];
-        }    
+        $menu->items['system']['items']['message'] = [
+            'url'   => Url::createUrl('admin/message'),
+            'label' => t('admin.menu', 'Messages')
+        ];
     });
 }
